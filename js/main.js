@@ -2,6 +2,9 @@
 const RIGHT_ARROW_BTN = 39;
 const LEFT_ARROW_BTN = 37;
 
+//константа для приветственного экрана
+const loadScreen = 1;
+
 //создаем массив экранов
 const screens = Array.from(document.querySelectorAll(`template`)).map(it => it.content);
 
@@ -22,7 +25,7 @@ const selectScreenNumber = (index) => {
   showScreen(screens[current]);
 }
 
-selectScreenNumber(1);
+selectScreenNumber(loadScreen);
 
 //добавляем htlm-стрелки
 const block = document.createElement(`div`);
