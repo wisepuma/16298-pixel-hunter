@@ -36,7 +36,6 @@ const selectScreenNumber = (current) => {
 selectScreenNumber(LOAD_SCREEN);
 
 // добавляем htlm-стрелки и вешаем событие с мыши
-
 const createButtons = () => {
   block.className = `arrows__wrap`;
   block.innerHTML = `
