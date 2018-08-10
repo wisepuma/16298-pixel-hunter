@@ -1,11 +1,13 @@
-'use strict';
 
 // константы  для правой и левой клавиш
 const RIGHT_ARROW_BTN = 39;
 const LEFT_ARROW_BTN = 37;
 
+// константа для стрелок
+const block = document.createElement(`div`);
+
 // константа для приветственного экрана
-const LOADSCREEN = 1;
+const LOAD_SCREEN = 0;
 
 // создаем массив экранов
 const screens = Array.from(document.querySelectorAll(`template`)).map((it) => it.content);
@@ -18,20 +20,22 @@ const showScreen = (element) => {
   mainElement.appendChild(element.cloneNode(true));
 };
 
-// листаем
-let current = 0;
-const selectScreenNumber = (index) => {
-  index = index < 0 ? 0 : index;
-  index = index >= screens.length ? screen.length - 1 : index;
-  current = index;
-  showScreen(screens[current]);
+// листаем слайды
+let currentScreen = 0;
+const selectScreenNumber = (current) => {
+  if (current < 0) {
+    current = screens.length - 1;
+  } else if (current >= screens.length - 1) {
+    current = 0;
+  }
+  currentScreen = current;
+  showScreen(screens[currentScreen]);
+
 };
 
-selectScreenNumber(LOADSCREEN);
+selectScreenNumber(LOAD_SCREEN);
 
-
-// добавляем htlm-стрелки
-const block = document.createElement(`div`);
+// добавляем htlm-стрелки и вешаем событие с мыши
 
 const createButtons = () => {
   block.className = `arrows__wrap`;
@@ -52,30 +56,28 @@ const createButtons = () => {
     <button class="arrows__btn"><-</button>
     <button class="arrows__btn">-></button>
   `;
+  const arrowsBtn = block.querySelectorAll(`.arrows__btn`);
+  arrowsBtn[0].addEventListener(`click`, () => {
+    selectScreenNumber(currentScreen - 1);
+  });
+
+  arrowsBtn[1].addEventListener(`click`, () => {
+    selectScreenNumber(currentScreen + 1);
+  });
 };
 
 document.querySelector(`body`).appendChild(block);
 createButtons();
 
 // вешаем событие с клавиатуры на стрелки
-
 document.addEventListener(`keydown`, (evt) => {
   switch (evt.keyCode) {
     case LEFT_ARROW_BTN:
-      selectScreenNumber(current + 1);
+      selectScreenNumber(currentScreen - 1);
       break;
     case RIGHT_ARROW_BTN:
-      selectScreenNumber(current - 1);
+      selectScreenNumber(currentScreen + 1);
       break;
   }
 });
 
-// вешаем событие с мыши на стрелки
-const arrowsBtn = document.querySelectorAll(`.arrows__btn`);
-arrowsBtn[0].addEventListener(`click`, () => {
-  selectScreenNumber(current - 1);
-});
-
-arrowsBtn[1].addEventListener(`click`, () => {
-  selectScreenNumber(current + 1);
-});
