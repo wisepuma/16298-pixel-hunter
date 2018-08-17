@@ -42,14 +42,16 @@ const rulesInput = element.querySelector(`input.rules__input`);
 const previousButton = element.querySelector(`button.back`);
 
 // кнопка "назад" в левом верхнем углу возвращает на экран приветствия
-previousButton.addEventListener(`click`, () => {
+  previousButton.addEventListener(`click`, () => {
   changeScreen(greeting);
 });
 
-// кнопка отправки отключается, пока в поле с именем игрока ничего не введено (пока не получилось)
-
-
-rulesButton.removeAttribute(`disabled`);
+// кнопка активна, если инпут не пуст
+rulesInput.addEventListener(`input`, () => {
+  if (rulesInput.value !== null) {
+    rulesButton.removeAttribute(`disabled`);
+  }
+});
 
 // game-1, должен показываться по отправке формы на экране правил игры.
 rulesButton.addEventListener(`click`, () => {

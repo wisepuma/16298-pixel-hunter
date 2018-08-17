@@ -47,15 +47,24 @@ const template = `<header class="header">
 </section>`;
 const element = render(template);
 
+// ищется прерыдущая кнопка
 const previousButton = element.querySelector(`button.back`);
+
+// ищется элемент формы игры
+const gameForm = element.querySelector(`.game__content`);
+
+// ищутся опции
+// const gameOption = element.querySelector(`game__option]`);
 
 // кнопка "назад" в левом верхнем углу возвращает на экран приветствия
 previousButton.addEventListener(`click`, () => {
   changeScreen(greeting);
 });
 
-
-//stats должен показываться по нажатию на любой ответ на третьем игровом экране, любой блок .game__option (пока не получилось)
+// stats должен показываться по нажатию на любой ответ на третьем игровом экране,
+gameForm.addEventListener(`click`, () => {
+  changeScreen(stats);
+});
 
 
 export default element;

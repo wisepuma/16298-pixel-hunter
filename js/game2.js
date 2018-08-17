@@ -49,14 +49,26 @@ const template = `<header class="header">
 </section>`;
 const element = render(template);
 
+// ищется предыдущая кнопка
 const previousButton = element.querySelector(`button.back`);
+
+// ищется элемент формы игры
+const gameForm = element.querySelector(`.game__content`);
+
+// ищется опция game__answer
+const gameAnswer = element.querySelector(`.game__answer`);
 
 // кнопка "назад" в левом верхнем углу возвращает на экран приветствия
 previousButton.addEventListener(`click`, () => {
   changeScreen(greeting);
 });
 
+// game-3 показывается по нажатию на любой ответ на втором игровом экране, любой блок .game__answer
+gameForm.addEventListener(`click`, () => {
+  if (gameAnswer.classList.contains(`game__answer`)) {
+    changeScreen(game3);
+  }
+});
 
-// game-3 показывается по нажатию на любой ответ на втором игровом экране, любой блок .game__answer (пока не получилось)
 
 export default element;
