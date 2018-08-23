@@ -67,10 +67,6 @@ const previousButton = element.querySelector(`button.back`);
 // ищется элемент form игры
 const gameForm = element.querySelector(`.game__content`);
 
-// ищутся радиобаттоны
-const photoButton = element.querySelector(`input[value=photo]`);
-const paintButton = element.querySelector(`input[value=paint]`);
-
 // кнопка "назад" в левом верхнем углу возвращает на экран приветствия
 
 previousButton.addEventListener(`click`, () => {
@@ -78,10 +74,9 @@ previousButton.addEventListener(`click`, () => {
 });
 
 // game-2 показывается после того, как выбраны оба варианта ответа на экране game-1
-// (на самом деле переключается, даже когда не выбран один из вариантов)
 
 gameForm.addEventListener(`change`, () => {
-  if ((photoButton.checked = true) && (paintButton.checked = true)) {
+  if (gameForm.querySelector(`input[value="photo"]:checked`) && gameForm.querySelector(`input[value="paint"]:checked`)) {
     changeScreen(game2);
   }
 });

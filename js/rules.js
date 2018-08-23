@@ -42,7 +42,7 @@ const rulesInput = element.querySelector(`input.rules__input`);
 const previousButton = element.querySelector(`button.back`);
 
 // кнопка "назад" в левом верхнем углу возвращает на экран приветствия
-  previousButton.addEventListener(`click`, () => {
+previousButton.addEventListener(`click`, () => {
   changeScreen(greeting);
 });
 
