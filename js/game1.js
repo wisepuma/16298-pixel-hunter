@@ -73,7 +73,7 @@ previousButton.addEventListener(`click`, () => {
   changeScreen(greeting);
 });
 
-// game-2 показывается после того, как выбраны оба варианта ответа на экране game-1
+// game-2 показывается после того, как выбраны варианты ответа для обеих задач на экране game-1
 
 gameForm.addEventListener(`change`, () => {
   if (gameForm.querySelector(`input[value="photo"]:checked`) && gameForm.querySelector(`input[value="paint"]:checked`)) {
