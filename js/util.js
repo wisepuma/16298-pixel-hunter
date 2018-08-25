@@ -11,4 +11,3 @@ export const changeScreen = (element) => {
   mainElement.appendChild(element);
 };
 
-

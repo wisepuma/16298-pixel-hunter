@@ -75,11 +75,8 @@ previousButton.addEventListener(`click`, () => {
 // game-2 показывается после того, как выбраны варианты ответа для обеих задач на экране game-1
 gameForm.addEventListener(`change`, () => {
   const inputs = gameForm.querySelectorAll(`input:checked`);
-  const options = gameForm.querySelectorAll(`.game__option`);
-  if (options.length === 2) {
-    if (inputs.length === 2) {
-      changeScreen(game2);
-    }
+  if (inputs.length === 2) {
+    changeScreen(game2);
   }
 });
 

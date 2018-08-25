@@ -70,5 +70,4 @@ gameForm.addEventListener(`click`, () => {
   }
 });
 
-
 export default element;
