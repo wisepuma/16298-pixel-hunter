@@ -68,16 +68,18 @@ const previousButton = element.querySelector(`button.back`);
 const gameForm = element.querySelector(`.game__content`);
 
 // кнопка "назад" в левом верхнем углу возвращает на экран приветствия
-
 previousButton.addEventListener(`click`, () => {
   changeScreen(greeting);
 });
 
 // game-2 показывается после того, как выбраны варианты ответа для обеих задач на экране game-1
-
 gameForm.addEventListener(`change`, () => {
-  if (gameForm.querySelector(`input[value="photo"]:checked`) && gameForm.querySelector(`input[value="paint"]:checked`)) {
-    changeScreen(game2);
+  const inputs = gameForm.querySelectorAll(`input:checked`);
+  const options = gameForm.querySelectorAll(`.game__option`);
+  if (options.length === 2) {
+    if (inputs.length === 2) {
+      changeScreen(game2);
+    }
   }
 });
 
