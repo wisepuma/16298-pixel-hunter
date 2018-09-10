@@ -1,8 +1,6 @@
 import {assert} from 'chai';
 import {calculateScore} from './game-data';
 
-mocha.setup(`bdd`);
-
 const answers = [
   [{answer: true, time: 10}, {answer: true, time: 10}, {answer: true, time: 10}, {answer: true, time: 10}, {answer: true, time: 10}, {answer: true, time: 10}, {answer: true, time: 10}, {answer: true, time: 10}, {answer: true, time: 10}, {answer: true, time: 10}],
   [{answer: true, time: 20}, {answer: true, time: 20}, {answer: true, time: 15}, {answer: true, time: 15}, {answer: true, time: 15}, {answer: true, time: 11}, {answer: true, time: 11}, {answer: true, time: 15}, {answer: true, time: 20}, {answer: true, time: 20}],
@@ -24,14 +22,14 @@ describe(`correct results`, () => {
     assert.equal(calculateScore(answers[2], 3), 650);
   });
 
-  it(`three false answers should return -1`, () => {
+  it(`three wrong answers should return -1`, () => {
     assert.equal(calculateScore(answers[3], 3), -1);
   });
 
-  it(`two false answers should return 950`, () => {
+  it(`two wrong answers should return 950`, () => {
     assert.equal(calculateScore(answers[4], 3), 950);
   });
 
 });
 
-mocha.run();
+
